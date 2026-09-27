@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://2oqfqxx5b61g"]
+
+[ext_resource type="Script" uid="uid://bsmu358ssdrii" path="res://enemies/enemy.gd" id="1_4gyqm"]
+[ext_resource type="Script" uid="uid://ynewbrkb4oeb" path="res://components/health_component.gd" id="1_7k104"]
+[ext_resource type="Script" uid="uid://ddg41dr04l471" path="res://components/hit_flash.gd" id="3_qi2p4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qi2p4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+resource_local_to_scene = true
+albedo_color = Color(0.71230936, 0, 0.026034886, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_iifgy"]
+
+[node name="Enemy" type="CharacterBody3D" unique_id=684997957]
+script = ExtResource("1_4gyqm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1897942982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_qi2p4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1099878266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_h2yge")
+mesh = SubResource("CapsuleMesh_iifgy")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1248757462]
+debug_enabled = true
+
+[node name="HealthComponent" type="Node" parent="." unique_id=250809716]
+script = ExtResource("1_7k104")
+metadata/_custom_type_script = "uid://ynewbrkb4oeb"
+
+[node name="HitFlash" type="Node" parent="." unique_id=1440169380 node_paths=PackedStringArray("mesh", "health_component")]
+script = ExtResource("3_qi2p4")
+mesh = NodePath("../MeshInstance3D")
+health_component = NodePath("../HealthComponent")
+flash_color = Color(1, 0, 1, 1)
+metadata/_custom_type_script = "uid://ddg41dr04l471"
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1280423180]
+one_shot = true
+
+[node name="SightRay" type="RayCast3D" parent="." unique_id=506828511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

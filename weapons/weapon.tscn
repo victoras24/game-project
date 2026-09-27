@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cgnd56weu3nrn"]
+
+[ext_resource type="Script" uid="uid://bwr06uuq4qg4p" path="res://weapons/weapon.gd" id="1_pxh0k"]
+[ext_resource type="PackedScene" uid="uid://dy755oun2nay6" path="res://weapons/impact.tscn" id="2_jfcw2"]
+[ext_resource type="AudioStream" uid="uid://fo2cuxdsvfqa" path="res://weapons/sounds/gun_shot.wav" id="3_aprtd"]
+[ext_resource type="AudioStream" uid="uid://dcqsp3b3e8g4d" path="res://weapons/sounds/empty_magazine.wav" id="4_fnyra"]
+[ext_resource type="AudioStream" uid="uid://xv0jqtnmhdlo" path="res://weapons/sounds/reload.wav" id="5_ffbw6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vny4w"]
+size = Vector3(0.1, 0.15, 0.5)
+
+[node name="Weapon" type="Node3D" unique_id=454706006]
+script = ExtResource("1_pxh0k")
+impact_scene = ExtResource("2_jfcw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=313609920]
+mesh = SubResource("BoxMesh_vny4w")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1018275755]
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=523936228]
+one_shot = true
+
+[node name="ShotSound" type="AudioStreamPlayer" parent="." unique_id=158707402]
+stream = ExtResource("3_aprtd")
+max_polyphony = 4
+
+[node name="EmptySound" type="AudioStreamPlayer" parent="." unique_id=1180023695]
+stream = ExtResource("4_fnyra")
+
+[node name="ReloadSound" type="AudioStreamPlayer" parent="." unique_id=1414893109]
+stream = ExtResource("5_ffbw6")

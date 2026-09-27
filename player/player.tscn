@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ckudr8chj1kgo"]
+
+[ext_resource type="Script" uid="uid://drlldp7l6q0o4" path="res://player/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://ynewbrkb4oeb" path="res://components/health_component.gd" id="3_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://dvewtmm6d837k" path="res://ui/hud.tscn" id="3_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://cgnd56weu3nrn" path="res://weapons/weapon.tscn" id="3_yw30f"]
+[ext_resource type="PackedScene" uid="uid://cpbebx652p3rs" path="res://ui/death_screen.tscn" id="4_qjkh3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+radius = 0.4
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" unique_id=844865579 groups=["player"]]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1811711435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="Head" type="Node3D" parent="." unique_id=1784048132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1772639592]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Weapons" type="Node3D" parent="Head/Camera3D" unique_id=1575249857]
+
+[node name="Rifle" parent="Head/Camera3D/Weapons" unique_id=454706006 node_paths=PackedStringArray("raycast") instance=ExtResource("3_yw30f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.25, -0.5)
+raycast = NodePath("../../RayCast3D")
+
+[node name="Pistol" parent="Head/Camera3D/Weapons" unique_id=88274097 node_paths=PackedStringArray("raycast") instance=ExtResource("3_yw30f")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.3, -0.25, -0.5)
+raycast = NodePath("../../RayCast3D")
+damage = 25.0
+fire_cooldown = 0.25
+is_automatic = false
+magazine_size = 8
+kick_distance = 0.08
+camera_recoil = 3.0
+
+[node name="Shotgun" parent="Head/Camera3D/Weapons" unique_id=2083879619 node_paths=PackedStringArray("raycast") instance=ExtResource("3_yw30f")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.3, -0.25, -0.5)
+raycast = NodePath("../../RayCast3D")
+damage = 8.0
+fire_cooldown = 0.8
+is_automatic = false
+magazine_size = 6
+kick_distance = 0.12
+camera_recoil = 5.0
+pellet_count = 8
+spread = 5.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=889544911]
+target_position = Vector3(0, 0, -100)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1191922530]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=991420899]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CenterContainer" unique_id=2134155902]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Hud" parent="CanvasLayer" unique_id=1970686918 instance=ExtResource("3_qjkh3")]
+
+[node name="DeathScreen" parent="CanvasLayer" unique_id=1299959657 instance=ExtResource("4_qjkh3")]
+
+[node name="HealthComponent" type="Node" parent="." unique_id=117063388]
+script = ExtResource("3_g1dw6")
+metadata/_custom_type_script = "uid://ynewbrkb4oeb"

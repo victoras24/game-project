@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cpbebx652p3rs"]
+
+[ext_resource type="Script" uid="uid://bv1mlqlwoxpei" path="res://ui/death_screen.gd" id="1_36x74"]
+
+[node name="DeathScreen" type="Control" unique_id=1299959657]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_36x74")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2026779783]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7294118, 0, 0, 0.5882353)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=710286906]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=2071449198]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "YOU DIED
+Press R to restart"
+horizontal_alignment = 1

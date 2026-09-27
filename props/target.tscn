@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://hwkql520awev"]
+
+[ext_resource type="Script" uid="uid://doevvxmqo15yu" path="res://props/target.gd" id="1_t2jmu"]
+[ext_resource type="Script" uid="uid://ynewbrkb4oeb" path="res://components/health_component.gd" id="2_e1yvt"]
+[ext_resource type="Script" uid="uid://ddg41dr04l471" path="res://components/hit_flash.gd" id="3_5ebp1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3hr3o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2jmu"]
+
+[node name="Target" type="StaticBody3D" unique_id=1701042594]
+script = ExtResource("1_t2jmu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=838575697]
+material_override = SubResource("StandardMaterial3D_0xm2m")
+mesh = SubResource("CapsuleMesh_3hr3o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2038274680]
+shape = SubResource("CapsuleShape3D_t2jmu")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1893167526]
+script = ExtResource("2_e1yvt")
+metadata/_custom_type_script = "uid://ynewbrkb4oeb"
+
+[node name="HitFlash" type="Node" parent="." unique_id=993010598 node_paths=PackedStringArray("mesh", "health_component")]
+script = ExtResource("3_5ebp1")
+mesh = NodePath("../MeshInstance3D")
+health_component = NodePath("../HealthComponent")
+flash_color = Color(1, 0.015686275, 0, 1)
+metadata/_custom_type_script = "uid://ddg41dr04l471"

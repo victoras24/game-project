@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dvewtmm6d837k"]
+
+[ext_resource type="Script" uid="uid://cp83wd0ocjxj8" path="res://ui/hud.gd" id="1_rbyyf"]
+
+[node name="Hud" type="Control" unique_id=1970686918]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_rbyyf")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=809340642]
+custom_minimum_size = Vector2(250, 24)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 4.0
+grow_vertical = 0
+mouse_filter = 2
+show_percentage = false
+
+[node name="AmmoLabel" type="Label" parent="." unique_id=405882524]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
