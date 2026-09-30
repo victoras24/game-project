@@ -35,7 +35,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "YOU DIED
 Press R to restart"
 horizontal_alignment = 1

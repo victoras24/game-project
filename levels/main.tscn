@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player/player.tscn" id="1_l8qe7"]
 [ext_resource type="PackedScene" uid="uid://hwkql520awev" path="res://props/target.tscn" id="2_m1504"]
 [ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://enemies/enemy.tscn" id="3_ifaiv"]
+[ext_resource type="Material" uid="uid://cwqdcf73fbafh" path="res://assets/materials/flesh.tres" id="3_m1504"]
+[ext_resource type="Material" uid="uid://cshc5drr508gs" path="res://assets/materials/ground.tres" id="4_ifaiv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 
@@ -59,6 +61,7 @@ navigation_mesh = SubResource("NavigationMesh_knw1w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.5, 8)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Box3" unique_id=1904193653]
+material_override = ExtResource("3_m1504")
 mesh = SubResource("BoxMesh_vny4w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Box3" unique_id=2136629733]
@@ -68,6 +71,7 @@ shape = SubResource("BoxShape3D_0xm2m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -6)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Box2" unique_id=1698137908]
+material_override = ExtResource("3_m1504")
 mesh = SubResource("BoxMesh_vny4w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Box2" unique_id=1051684179]
@@ -77,6 +81,7 @@ shape = SubResource("BoxShape3D_0xm2m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3815155, 3.4372253, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Box" unique_id=2085948376]
+material_override = ExtResource("3_m1504")
 mesh = SubResource("BoxMesh_vny4w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Box" unique_id=146770968]
@@ -88,6 +93,7 @@ shape = SubResource("BoxShape3D_0xm2m")
 shape = SubResource("BoxShape3D_7dm0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=514316343]
+material_override = ExtResource("4_ifaiv")
 mesh = SubResource("BoxMesh_7dm0k")
 
 [node name="Enemy" parent="." unique_id=684997957 instance=ExtResource("3_ifaiv")]

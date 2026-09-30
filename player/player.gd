@@ -58,8 +58,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED):
 		if (event is InputEventMouseMotion): 
-			rotate_y(-event.relative.x * sensitivity)
-			head.rotate_x(-event.relative.y * sensitivity)
+			rotate_y(-event.screen_relative.x * sensitivity)
+			head.rotate_x(-event.screen_relative.y * sensitivity)
 			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	elif (event is InputEventMouseButton and event.is_released()):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

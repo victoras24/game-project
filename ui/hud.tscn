@@ -13,7 +13,7 @@ mouse_filter = 2
 script = ExtResource("1_rbyyf")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=809340642]
-custom_minimum_size = Vector2(250, 24)
+custom_minimum_size = Vector2(180, 14)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -35,4 +35,4 @@ offset_left = -40.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
